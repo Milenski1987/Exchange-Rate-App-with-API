@@ -5,7 +5,7 @@ Chatbot works with Exchange Rate API - Get all conversion rates in real time. Al
 
 1️⃣ Go to [Excahnge Rate API website]([https://groq.com](https://www.exchangerate-api.com)) and create an account.  
 2️⃣ Navigate to your dashboard and generate an API key.  
-3️⃣ Copy the key (keep it secret 🤫) and replace "enter_my_api_key_here" in the code.
+3️⃣ Copy the key (keep it secret 🤫) and replace "enter_api_key_here" in the code.
 
 This application gives users options to:
 * choose the currency they want to exchange

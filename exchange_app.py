@@ -8,7 +8,7 @@ from currencies_data import supported_currency
 def exchange(current_currency:str,current_currency_amount: int, wanted_currency:str) -> tuple:
 
     # Making our request and get information
-    url = f'https://v6.exchangerate-api.com/v6/{enter_your_api_key_here}/latest/{current_currency}'
+    url = f'https://v6.exchangerate-api.com/v6/{enter_api_key_here}/latest/{current_currency}'
     response = requests.get(url)
     rate = response.json()["conversion_rates"][wanted_currency]
     current_result = rate * current_currency_amount
@@ -34,47 +34,52 @@ def main():
 
 root = tk.Tk()
 root.title("Exchange rate App")
-root.geometry("500x350")
+root.geometry("515x300")
 
 
-#create currency type input field
+#create labels
 input_field_label_type = tk.Label(root, text="Choose code of the currency you want to exchange here:")
+input_field_label_receive = tk.Label(root, text="Choose code of the currency you want to receive here:")
+
+#arrange labels
+input_field_label_type.grid(row=0, column=0, sticky="w")
+input_field_label_receive.grid(row=1, column=0, sticky="w")
+
+#create menus
 input_currency_menu = StringVar(root)
 input_currency_menu.set(supported_currency[0])
 input_menu = OptionMenu(root, input_currency_menu, *supported_currency)
-input_field_label_type.pack()
-input_menu.pack()
-
-#create received currency input field
-input_field_label_receive = tk.Label(root, text="Choose code of the currency you want to receive here:")
+input_menu.config(fg="black")
 input_receive_menu = StringVar(root)
 input_receive_menu.set(supported_currency[0])
 receive_menu = OptionMenu(root, input_receive_menu, *supported_currency)
-input_field_label_receive.pack()
-receive_menu.pack()
+receive_menu.config(fg="black")
 
+#arrange menus
+input_menu.grid(row=0, column= 1, sticky="")
+receive_menu.grid(row=1, column= 1, sticky="")
 
-#create currency amount input field
-input_field_label_amount = tk.Label(root, text="How much of the currency you want to exchange(integer without decimal point):")
-input_field_entry_amount = tk.Entry(root,justify='center', bg="black", fg="white")
-input_field_label_amount.pack()
-input_field_entry_amount.pack()
+#create amount entry label and arrange it
+input_field_label_amount = tk.Label(root, text="Currency amount you want to exchange(integer without decimal point):")
+input_field_label_amount.grid(row=2,column = 0, sticky="w")
 
+#create amount entry field and arrange it
+input_field_entry_amount = tk.Entry(root,justify='center', bg="black", fg="white", width=7)
+input_field_entry_amount.grid(row=2,column= 1, sticky="")
 
-#create exchange button
+#create exchange button and arrange it
 exchange_button = tk.Button(root, text="Exchange", command=lambda: get_exchange_information())
+exchange_button.grid(row=3,column=0,sticky="",columnspan = 2)
 
-exchange_button.pack()
 
-#create app response field
-response_field = tk.Text(root, bg="black", fg="yellow", height= 50)
-response_field.pack()
+#create app response field and arrange it
+response_field = tk.Text(root, bg="black", fg="white", width= 70, height= 14)
+response_field.grid(row=4,column=0,columnspan = 2)
 
 def get_exchange_information():
     user_current_currency = input_currency_menu.get()
     user_wanted_currency = input_receive_menu.get()
     user_current_currency_amount = int(input_field_entry_amount.get())
-
     response = exchange(user_current_currency, user_current_currency_amount, user_wanted_currency)
 
     response_field.insert(tk.END, response)
