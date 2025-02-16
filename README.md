@@ -1,10 +1,10 @@
 # 💵 Welcome to Exchange Rate App 💶
 ![image](https://github.com/user-attachments/assets/e8dd8e2f-4651-44c4-9b13-de07734d4739)
 
-Chatbot works with Exchange Rate API - Get all conversion rates in real time. All you need to do is:
+Application works with Exchange Rate API - Get all conversion rates in real time. All you need to do is:
 
-1️⃣ Go to [Excahnge Rate API website]([https://groq.com](https://www.exchangerate-api.com)) and create an account.  
-2️⃣ Navigate to your dashboard and generate an API key.  
+1️⃣ Go to [Excahnge Rate API website](https://www.exchangerate-api.com) and create an account.  
+2️⃣ Navigate and generate an API key.  
 3️⃣ Copy the key (keep it secret 🤫) and replace "enter_my_api_key_here" in the code.
 
 This application gives users options to:
