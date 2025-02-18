@@ -2,19 +2,20 @@ from tkinter import StringVar, OptionMenu
 from tkinter.constants import SUNKEN
 import requests
 import tkinter as tk
-from currencies_data import supported_currency
+data_currency = open("currencies_data", "r")
+supported_currency = data_currency.readlines()
 
 
-def exchange(current_currency:str,current_currency_amount: int, wanted_currency:str) -> tuple:
+def exchange(current_currency:str,current_currency_amount: int, wanted_currency:str) -> str:
 
     # Making our request and get information
-    url = f'https://v6.exchangerate-api.com/v6/{enter_api_key_here}/latest/{current_currency}'
+    url = f'https://v6.exchangerate-api.com/v6/66c0148aeceee70c30376892/latest/{current_currency.split("-")[0].strip()}'
     response = requests.get(url)
-    rate = response.json()["conversion_rates"][wanted_currency]
+    rate = response.json()["conversion_rates"][wanted_currency.split("-")[0].strip()]
     current_result = rate * current_currency_amount
-    return (f"Current exchange rate: 1 {current_currency} = {rate:.3f} {wanted_currency}\n"
-            f"For {current_currency_amount} {current_currency.upper()} "
-            f"you will receive {current_result:.3f} {wanted_currency.upper()}\n\n")
+    return (f"Current exchange rate: 1 {current_currency.split("-")[1]} = {rate:.3f} {wanted_currency.split("-")[1]}\n"
+            f"For {current_currency_amount} {current_currency.split("-")[1]} "
+            f"you will receive {current_result:.3f} {wanted_currency.split("-")[1]}\n\n")
 
 
 def main():
@@ -46,6 +47,7 @@ input_field_label_type.grid(row=0, column=0, sticky="w")
 input_field_label_receive.grid(row=1, column=0, sticky="w")
 
 #create menus
+
 input_currency_menu = StringVar(root)
 input_currency_menu.set(supported_currency[0])
 input_menu = OptionMenu(root, input_currency_menu, *supported_currency)
