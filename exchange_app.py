@@ -49,8 +49,8 @@ my_canvas.pack(fill="both", expand=True)
 my_canvas.create_image(0,0,image = bg, anchor="nw")
 
 #create labels
-input_field_label_type = tk.Label(my_canvas,bg = "light yellow",fg="black",text="Choose the currency you want to exchange here: ")
-input_field_label_receive = tk.Label(my_canvas,bg = "light yellow",fg="black", text="Choose the currency you want to receive here:")
+input_field_label_type = tk.Label(my_canvas,width = 37,bg = "light yellow",fg="black",text="Choose the currency you want to exchange here: ")
+input_field_label_receive = tk.Label(my_canvas,width = 37,bg = "light yellow",fg="black", text="Choose the currency you want to receive here:")
 
 #arrange labels
 input_field_label_type.place(x = 290, y = 10)
@@ -71,11 +71,11 @@ input_menu.place(x= 290, y= 35)
 receive_menu.place(x= 640, y = 35)
 
 #create amount entry label and arrange it
-input_field_label_amount = tk.Label(my_canvas,bg = "light yellow",fg="black", text="Currency amount you want to exchange:")
+input_field_label_amount = tk.Label(my_canvas,width = 37,bg = "light yellow",fg="black", text="Currency amount you want to exchange:")
 input_field_label_amount.place(x= 290, y = 75)
 
 #create amount entry field and arrange it
-input_field_entry_amount = tk.Entry(my_canvas,justify='center', bg="light blue", fg="black", width=36)
+input_field_entry_amount = tk.Entry(my_canvas,justify='center', bg="light blue", fg="black", width=37)
 input_field_entry_amount.place(x= 290, y= 100)
 
 
