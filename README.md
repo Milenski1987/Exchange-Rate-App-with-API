@@ -3,9 +3,9 @@
 
 Application works with Exchange Rate API - Get all conversion rates in real-time.
 
-Application is still in beta and works only in IDE. To run this app follow the steps:
+The application is still in beta and works only in IDE. To run this app follow the steps:
   * open your IDE and create 2 files ( one of them must be with name "currencies_data" )
-  * in file "currencies_data" copy data from file with same name in this repository
+  * in the file "currencies_data" copy data from the file with the same name in this repository
   * in other file copy code from "exchange_app.py"
   * go to [Excahnge Rate API website](https://www.exchangerate-api.com) and create an account  
   * navigate and generate an API key.  
@@ -18,6 +18,7 @@ This application works with currency conversion rates for 161 currencies and giv
 * choose the currency they want to exchange
 * choose the currency they want to receive
 * enter the amount of currency for exchange
+* added dashboard with most common currencies rates
 ---
 
 ## Technology stack:
