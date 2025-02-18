@@ -1,8 +1,6 @@
-from tkinter import StringVar, OptionMenu
-from tkinter.constants import SUNKEN
 import requests
 import tkinter as tk
-from PIL import ImageTk, Image
+from tkinter import *
 
 
 data_currency = open("currencies_data", "r")
@@ -12,7 +10,7 @@ supported_currency = data_currency.readlines()
 def exchange(current_currency:str,current_currency_amount: int, wanted_currency:str) -> str:
 
     # Making our request and get information
-    url = f'https://v6.exchangerate-api.com/v6/66c0148aeceee70c30376892/latest/{current_currency.split("-")[0].strip()}'
+    url = f'https://v6.exchangerate-api.com/v6/<YOUR_API_KEY_HERE>/latest/{current_currency.split("-")[0].strip()}'
     response = requests.get(url)
     rate = response.json()["conversion_rates"][wanted_currency.split("-")[0].strip()]
     current_result = rate * current_currency_amount
@@ -40,53 +38,56 @@ root = tk.Tk()
 root.title("Exchange rate App")
 root.geometry("800x480")
 
+#define image
+bg = PhotoImage(file="gettyimages-609801990.png")
+
+#create canvas
+my_canvas = tk.Canvas(root, width=800, height=480)
+my_canvas.pack(fill="both", expand=True)
+
+#set image in canvas
+my_canvas.create_image(0,0,image = bg, anchor="nw")
 
 #create labels
-input_field_label_type = tk.Label(root, text="Choose code of the currency you want to exchange here:")
-input_field_label_receive = tk.Label(root, text="Choose code of the currency you want to receive here:")
+input_field_label_type = tk.Label(my_canvas,bg = "light yellow", text="Choose the currency you want to exchange here:")
+input_field_label_receive = tk.Label(my_canvas,bg = "light yellow", text="Choose the currency you want to receive here:")
 
 #arrange labels
-input_field_label_type.grid(row=0, column=0, sticky="w")
-input_field_label_receive.grid(row=1, column=0, sticky="w")
+input_field_label_type.place(x = 450, y = 10)
+input_field_label_receive.place(x= 450, y = 90)
 
 #create menus
-
-input_currency_menu = StringVar(root)
+input_currency_menu = StringVar(my_canvas)
 input_currency_menu.set(supported_currency[0])
-input_menu = OptionMenu(root, input_currency_menu, *supported_currency)
-input_menu.config(fg="black")
-input_receive_menu = StringVar(root)
+input_menu = OptionMenu(my_canvas, input_currency_menu, *supported_currency)
+input_menu.config(bg="light blue",fg="black", pady =0, padx= 2)
+input_receive_menu = StringVar(my_canvas)
 input_receive_menu.set(supported_currency[0])
-receive_menu = OptionMenu(root, input_receive_menu, *supported_currency)
-receive_menu.config(fg="black")
+receive_menu = OptionMenu(my_canvas, input_receive_menu, *supported_currency)
+receive_menu.config(bg="light blue",fg="black",pady=0)
 
 #arrange menus
-input_menu.grid(row=0, column= 1, sticky="")
-receive_menu.grid(row=1, column= 1, sticky="")
+input_menu.place(x= 450, y= 35)
+receive_menu.place(x= 450, y = 115)
 
 #create amount entry label and arrange it
-input_field_label_amount = tk.Label(root, text="Currency amount you want to exchange(integer without decimal point):")
-input_field_label_amount.grid(row=2,column = 0, sticky="w")
+input_field_label_amount = tk.Label(my_canvas,bg = "light yellow", text="Currency amount you want to exchange:")
+input_field_label_amount.place(x= 450, y = 170)
 
 #create amount entry field and arrange it
-input_field_entry_amount = tk.Entry(root,justify='center', bg="yellow", fg="black", width=30)
-input_field_entry_amount.grid(row=2,column= 1, sticky="")
+input_field_entry_amount = tk.Entry(my_canvas,justify='center', bg="light blue", fg="black", width=36)
+input_field_entry_amount.place(x= 450, y= 195)
 
 
 #create exchange button and arrange it
-exchange_button = tk.Button(root, text="Exchange", command=lambda: get_exchange_information())
-exchange_button.grid(row=3,column=1,sticky="")
+exchange_button = tk.Button(my_canvas,bg="light blue", text="Exchange", command=lambda: get_exchange_information())
+exchange_button.place(x = 570, y = 250)
 
-#create photo image field and arrange it
-image = Image.open("exchange.png")
-image = ImageTk.PhotoImage(image)
-image_label = tk.Label(root, image=image)
-image_label.grid(row=4, column=0)
 
 
 #create app response field and arrange it
-response_field = tk.Text(root, bg="yellow", fg="black", width=50, height= 14)
-response_field.grid(row=4,column=1, sticky="w")
+response_field = tk.Text(my_canvas, bg="light blue" , fg="black", width=48, height= 11)
+response_field.place(x = 400, y = 280)
 
 def get_exchange_information():
     user_current_currency = input_currency_menu.get()
