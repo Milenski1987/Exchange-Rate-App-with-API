@@ -9,7 +9,7 @@ supported_currency = data_currency.readlines()
 def exchange(current_currency:str,current_currency_amount: int, wanted_currency:str) -> str:
 
     # Making our request and get information
-    url = f'https://v6.exchangerate-api.com/v6/66c0148aeceee70c30376892/latest/{current_currency.split("-")[0].strip()}'
+    url = f'https://v6.exchangerate-api.com/v6/<YOUR_API_KEY_HERE>/latest/{current_currency.split("-")[0].strip()}'
     response = requests.get(url)
     rate = response.json()["conversion_rates"][wanted_currency.split("-")[0].strip()]
     current_result = rate * current_currency_amount
