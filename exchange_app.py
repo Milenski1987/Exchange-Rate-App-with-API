@@ -2,6 +2,9 @@ from tkinter import StringVar, OptionMenu
 from tkinter.constants import SUNKEN
 import requests
 import tkinter as tk
+from PIL import ImageTk, Image
+
+
 data_currency = open("currencies_data", "r")
 supported_currency = data_currency.readlines()
 
@@ -9,13 +12,13 @@ supported_currency = data_currency.readlines()
 def exchange(current_currency:str,current_currency_amount: int, wanted_currency:str) -> str:
 
     # Making our request and get information
-    url = f'https://v6.exchangerate-api.com/v6/<YOUR_API_KEY_HERE>/latest/{current_currency.split("-")[0].strip()}'
+    url = f'https://v6.exchangerate-api.com/v6/66c0148aeceee70c30376892/latest/{current_currency.split("-")[0].strip()}'
     response = requests.get(url)
     rate = response.json()["conversion_rates"][wanted_currency.split("-")[0].strip()]
     current_result = rate * current_currency_amount
-    return (f"Current exchange rate: 1 {current_currency.split("-")[1]} = {rate:.3f} {wanted_currency.split("-")[1]}\n"
-            f"For {current_currency_amount} {current_currency.split("-")[1]} "
-            f"you will receive {current_result:.3f} {wanted_currency.split("-")[1]}\n\n")
+    return (f"Current exchange rate:\n1 {current_currency.split("-")[1]} = {rate:.3f}{wanted_currency.split("-")[1]}\n\n"
+            f"For {current_currency_amount} {current_currency.split("-")[1]}\n "
+            f"you will receive {current_result:.3f}{wanted_currency.split("-")[1]}\n\n")
 
 
 def main():
@@ -35,7 +38,7 @@ def main():
 
 root = tk.Tk()
 root.title("Exchange rate App")
-root.geometry("515x300")
+root.geometry("800x480")
 
 
 #create labels
@@ -66,17 +69,24 @@ input_field_label_amount = tk.Label(root, text="Currency amount you want to exch
 input_field_label_amount.grid(row=2,column = 0, sticky="w")
 
 #create amount entry field and arrange it
-input_field_entry_amount = tk.Entry(root,justify='center', bg="black", fg="white", width=7)
+input_field_entry_amount = tk.Entry(root,justify='center', bg="yellow", fg="black", width=30)
 input_field_entry_amount.grid(row=2,column= 1, sticky="")
+
 
 #create exchange button and arrange it
 exchange_button = tk.Button(root, text="Exchange", command=lambda: get_exchange_information())
-exchange_button.grid(row=3,column=0,sticky="",columnspan = 2)
+exchange_button.grid(row=3,column=1,sticky="")
+
+#create photo image field and arrange it
+image = Image.open("exchange.png")
+image = ImageTk.PhotoImage(image)
+image_label = tk.Label(root, image=image)
+image_label.grid(row=4, column=0)
 
 
 #create app response field and arrange it
-response_field = tk.Text(root, bg="black", fg="white", width= 70, height= 14)
-response_field.grid(row=4,column=0,columnspan = 2)
+response_field = tk.Text(root, bg="yellow", fg="black", width=50, height= 14)
+response_field.grid(row=4,column=1, sticky="w")
 
 def get_exchange_information():
     user_current_currency = input_currency_menu.get()
