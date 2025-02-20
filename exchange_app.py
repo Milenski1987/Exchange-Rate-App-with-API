@@ -6,16 +6,17 @@ from tkinter import ttk
 #read file with currencies data
 with open("currencies_data", "r") as data_currency:
     supported_currency = data_currency.readlines()
+    available_currencies = [currency.strip("\n") for currency in supported_currency]
 
 def exchange(current_currency:str,current_currency_amount: int, wanted_currency:str) -> str:
     # Making our request and get information
-    url = f'https://v6.exchangerate-api.com/v6/66c0148aeceee70c30376892/latest/{current_currency.strip('\n')}'
+    url = f'https://v6.exchangerate-api.com/v6/<YOUR_API_KEY_HERE>/latest/{current_currency.split()[1]}'
     response = requests.get(url)
-    rate = response.json()["conversion_rates"][wanted_currency.strip('\n')]
+    rate = response.json()["conversion_rates"][wanted_currency.split()[1]]
     current_result = rate * current_currency_amount
-    return (f"Current exchange rate:\n1 {current_currency} = {rate:.3f}{wanted_currency}\n\n"
-            f"For {current_currency_amount} {current_currency}\n "
-            f"you will receive {current_result:.3f}{wanted_currency}\n\n")
+    return (f"Current exchange rate:\n1 {current_currency.split()[1]} = {rate:.3f}{wanted_currency.split()[1]}\n\n"
+            f"For {current_currency_amount} {current_currency.split()[1]}\n "
+            f"you will receive {current_result:.3f}{wanted_currency.split()[1]}\n\n")
 
 def dashboard_rates(first_currency:str , second_currency: str) -> float:
     # Get information for our dashboard with most common currencies
@@ -28,7 +29,7 @@ def get_exchange_information():
     # main GUI function
     user_current_currency = input_currency_menu.get()
     user_wanted_currency = input_receive_menu.get()
-    user_current_currency_amount = int(input_field_entry_amount.get())
+    user_current_currency_amount = float(input_field_entry_amount.get())
     response = exchange(user_current_currency, user_current_currency_amount, user_wanted_currency)
     response_field.insert(tk.END, response)
 
@@ -38,7 +39,7 @@ def main():
 
     #User choose what currency to exchange and amount of that currency
     user_current_currency = input("Please enter 3 letters code of the currency you want to exchange:  ")
-    user_current_currency_amount = int(input("How much of the currency you want to exchange:  "))
+    user_current_currency_amount = float(input("How much of the currency you want to exchange:  "))
 
     #User choose what currency to receive
     user_wanted_currency = input("Please enter 3 letters code of the currency you want to receive:  ")
@@ -74,11 +75,11 @@ input_field_label_receive.place(x= 290, y = 310)
 #create menus
 input_currency_menu = StringVar(my_canvas)
 input_currency_menu.set(" ")
-input_menu = OptionMenu(my_canvas, input_currency_menu, *supported_currency)
+input_menu = OptionMenu(my_canvas, input_currency_menu, *available_currencies)
 input_menu.config(bg="light blue",fg="black",width=7)
 input_receive_menu = StringVar(my_canvas)
 input_receive_menu.set(" ")
-receive_menu = OptionMenu(my_canvas, input_receive_menu, *supported_currency)
+receive_menu = OptionMenu(my_canvas, input_receive_menu, *available_currencies)
 receive_menu.config(bg="light blue",fg="black",width=7)
 
 #arrange menus
