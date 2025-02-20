@@ -4,19 +4,18 @@ from tkinter import *
 from tkinter import ttk
 
 #read file with currencies data
-data_currency = open("currencies_data", "r")
-supported_currency = data_currency.readlines()
-
+with open("currencies_data", "r") as data_currency:
+    supported_currency = data_currency.readlines()
 
 def exchange(current_currency:str,current_currency_amount: int, wanted_currency:str) -> str:
     # Making our request and get information
-    url = f'https://v6.exchangerate-api.com/v6/<YOUR_API_KEY_HERE>/latest/{current_currency.split("-")[0].strip()}'
+    url = f'https://v6.exchangerate-api.com/v6/66c0148aeceee70c30376892/latest/{current_currency.strip('\n')}'
     response = requests.get(url)
-    rate = response.json()["conversion_rates"][wanted_currency.split("-")[0].strip()]
+    rate = response.json()["conversion_rates"][wanted_currency.strip('\n')]
     current_result = rate * current_currency_amount
-    return (f"Current exchange rate:\n1 {current_currency.split("-")[1]} = {rate:.3f}{wanted_currency.split("-")[1]}\n\n"
-            f"For {current_currency_amount} {current_currency.split("-")[1]}\n "
-            f"you will receive {current_result:.3f}{wanted_currency.split("-")[1]}\n\n")
+    return (f"Current exchange rate:\n1 {current_currency} = {rate:.3f}{wanted_currency}\n\n"
+            f"For {current_currency_amount} {current_currency}\n "
+            f"you will receive {current_result:.3f}{wanted_currency}\n\n")
 
 def dashboard_rates(first_currency:str , second_currency: str) -> float:
     # Get information for our dashboard with most common currencies
@@ -74,25 +73,25 @@ input_field_label_receive.place(x= 290, y = 310)
 
 #create menus
 input_currency_menu = StringVar(my_canvas)
-input_currency_menu.set(supported_currency[0].strip("\n"))
+input_currency_menu.set(" ")
 input_menu = OptionMenu(my_canvas, input_currency_menu, *supported_currency)
-input_menu.config(bg="light blue",fg="black")
+input_menu.config(bg="light blue",fg="black",width=7)
 input_receive_menu = StringVar(my_canvas)
-input_receive_menu.set(supported_currency[0].strip("\n"))
+input_receive_menu.set(" ")
 receive_menu = OptionMenu(my_canvas, input_receive_menu, *supported_currency)
-receive_menu.config(bg="light blue",fg="black")
+receive_menu.config(bg="light blue",fg="black",width=7)
 
 #arrange menus
-input_menu.place(x= 290, y= 275)
-receive_menu.place(x= 290, y = 335)
+input_menu.place(x= 400, y= 275)
+receive_menu.place(x= 400, y = 335)
 
 #create amount entry label and arrange it
 input_field_label_amount = tk.Label(my_canvas,width = 34,bg = "light yellow",fg="black", text="Currency amount you want to exchange:")
 input_field_label_amount.place(x= 290, y = 375)
 
 #create amount entry field and arrange it
-input_field_entry_amount = tk.Entry(my_canvas,justify='center', bg="light blue", fg="black", width=34)
-input_field_entry_amount.place(x= 290, y= 400)
+input_field_entry_amount = tk.Entry(my_canvas,justify='center', bg="light blue", fg="black", width=10)
+input_field_entry_amount.place(x= 400, y= 400)
 
 
 #create exchange button and arrange it
