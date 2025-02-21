@@ -7,7 +7,7 @@ The application is still in beta and works only in IDE. To run this app follow t
   * open your IDE and copy files from [this repository](https://github.com/Milenski1987/Exchange-Rate-App-with-API)
   * go to [Excahnge Rate API website](https://www.exchangerate-api.com) and create an account  
   * navigate and generate an API key.  
-  * copy the key (keep it secret 🤫) and replace "YOUR_API_KEY_HERE" in the code.
+  * copy the key (keep it secret 🤫) and replace "YOUR_API_KEY_HERE" in the code (row 14 and row 24.
   * start application
 
 ---
