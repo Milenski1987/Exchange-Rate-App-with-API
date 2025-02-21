@@ -2,6 +2,7 @@ import requests
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
+from PIL import ImageTk
 
 #read file with currencies data
 with open("currencies_data", "r") as data_currency:
@@ -10,7 +11,7 @@ with open("currencies_data", "r") as data_currency:
 
 def exchange(current_currency:str,current_currency_amount: int, wanted_currency:str) -> str:
     # Making our request and get information
-    url = f'https://v6.exchangerate-api.com/v6/<YOUR_API_KEY_HERE>/latest/{current_currency.split()[1]}'
+    url = f'https://v6.exchangerate-api.com/v6/66c0148aeceee70c30376892/latest/{current_currency.split()[1]}'
     response = requests.get(url)
     rate = response.json()["conversion_rates"][wanted_currency.split()[1]]
     current_result = rate * current_currency_amount
@@ -34,6 +35,18 @@ def get_exchange_information():
     response_field.insert(tk.END, response)
 
 
+def information_pop_up():
+    informative_screen = Toplevel()
+    informative_screen.geometry("1000x690")
+    informative_screen.title("Detailed information")
+    imagebox = tk.Label(informative_screen)
+    imagebox.pack()
+    image = ImageTk.PhotoImage(file="currency_codes.png")
+    imagebox.config(image=image)
+    imagebox.image = image
+
+
+
 def main():
     print("Hello to Exchange Rate App")
 
@@ -52,7 +65,7 @@ def main():
 #create GUI
 root = tk.Tk()
 root.title("Exchange rate App")
-root.geometry("1020x680")
+root.geometry("1020x690")
 
 #define image
 bg = PhotoImage(file="gettyimages-609801990.png")
@@ -119,6 +132,13 @@ dashboard_text.insert(tk.END, f"\n🇪🇺EUR to 🇺🇸USD->  {dashboard_rates
 dashboard_text.insert(tk.END, f"\n🇪🇺EUR to 🇬🇧GBP->  {dashboard_rates("EUR", "GBP"):.3f} GBP")
 dashboard_text.insert(tk.END, f"\n🇬🇧GBP to 🇪🇺EUR->  {dashboard_rates("GBP", "EUR"):.3f} EUR")
 dashboard_text.place(x= 350, y = 20)
+
+
+#create button for pop-up informative window
+information_window_label = tk.Label(my_canvas,width = 27,bg = "light yellow",fg="black",text="For more detailed currency information: ")
+information_window_label.place(x= 660, y= 35)
+informative_button = ttk.Button(my_canvas, width=15, text = " Click Here!", command= lambda: information_pop_up() )
+informative_button.place(x= 705, y = 65)
 
 root.mainloop()
 main()
