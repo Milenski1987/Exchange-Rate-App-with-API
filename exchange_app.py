@@ -29,7 +29,7 @@ def check_input_validity(func):
 @check_input_validity
 def exchange(current_currency_amount: float,current_currency:str, wanted_currency:str) -> str:
     # Making our request and get information
-    url = f'https://v6.exchangerate-api.com/v6/66c0148aeceee70c30376892/latest/{current_currency.split()[1]}'
+    url = f'https://v6.exchangerate-api.com/v6/<YOUR_API_KEY_HERE>/latest/{current_currency.split()[1]}'
     response = requests.get(url)
     rate = response.json()["conversion_rates"][wanted_currency.split()[1]]
     current_result = rate * current_currency_amount
@@ -53,7 +53,7 @@ def get_exchange_information():
 
 def dashboard_rates(first_currency:str) -> float:
     # Get information for our dashboard with common currencies
-    url = f'https://v6.exchangerate-api.com/v6/66c0148aeceee70c30376892/latest/{first_currency}'
+    url = f'https://v6.exchangerate-api.com/v6/<YOUR_API_KEY_HERE>/latest/{first_currency}'
     response = requests.get(url)
     rate_usd = response.json()["conversion_rates"]["USD"]
     rate_gbp = response.json()["conversion_rates"]["GBP"]
