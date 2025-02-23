@@ -16,6 +16,7 @@ def resource_path(relative_path):
 
 
 def check_input_validity(func):
+    # Check validity of amount input
     def wrapper(current_currency_amount, *args, **kwargs):
         if not isinstance(current_currency_amount, (int,float)):
             raise ValueError("Amount must be valid number!")
@@ -38,8 +39,9 @@ def exchange(current_currency_amount: float,current_currency:str, wanted_currenc
 
 
 def get_exchange_information():
-    # main GUI function
+    # main GUI function that gives user a choice for currencies and ammount
     try:
+        response_field.delete("1.0", "end")
         user_current_currency = input_currency_menu.get()
         user_wanted_currency = input_receive_menu.get()
         user_current_currency_amount = float(input_field_entry_amount.get())
@@ -50,7 +52,7 @@ def get_exchange_information():
 
 
 def dashboard_rates(first_currency:str) -> float:
-    # Get information for our dashboard with most common currencies
+    # Get information for our dashboard with common currencies
     url = f'https://v6.exchangerate-api.com/v6/66c0148aeceee70c30376892/latest/{first_currency}'
     response = requests.get(url)
     rate_usd = response.json()["conversion_rates"]["USD"]
@@ -62,6 +64,7 @@ def dashboard_rates(first_currency:str) -> float:
 
 
 def information_pop_up():
+    #Create screen with detailed information about currencies
     informative_screen = Toplevel()
     informative_screen.geometry("1000x690")
     informative_screen.title("Detailed information")
@@ -108,7 +111,7 @@ my_canvas.pack(fill="both", expand=True)
 #set image in canvas
 my_canvas.create_image(0,0,image = bg, anchor="nw")
 
-#better way for labels
+#create labels for input fields
 my_canvas.create_text(450,260 , text="Choose the currency you want to exchange here: ",font=("Arial", 15), fill="black")
 my_canvas.create_text(450,320 , text="Choose the currency you want to receive here:",font=("Arial", 15), fill="black")
 my_canvas.create_text(450,385 , text="Currency amount you want to exchange: ",font=("Arial", 15), fill="black")
