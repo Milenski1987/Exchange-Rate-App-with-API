@@ -72,6 +72,7 @@ def information_pop_up():
     imagebox.image = image
 
 
+
 def main():
     print("Hello to Exchange Rate App")
 
