@@ -3,6 +3,7 @@
 
 Application works with Exchange Rate API - Get all conversion rates in real-time.
 
+
 The application is still in beta and works only in IDE. To run this app follow the steps:
   * open your IDE and copy files from [this repository](https://github.com/Milenski1987/Exchange-Rate-App-with-API)
   * go to [Excahnge Rate API website](https://www.exchangerate-api.com) and create an account  
