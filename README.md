@@ -11,6 +11,7 @@ The application is still in beta and works only in IDE. To run this app follow t
   * copy the key (keep it secret 🤫) and replace "<YOUR_API_KEY_HERE>" in the code (row 33 and row 60).
   * start application
 
+### Currently, the application runs smoothly on macOS.
 ---
 
 This application works with currency conversion rates for over 150 currencies and gives users options to:
