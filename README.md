@@ -8,17 +8,15 @@ The application is still in beta and works only in IDE. To run this app follow t
   * open your IDE and copy files from [this repository](https://github.com/Milenski1987/Exchange-Rate-App-with-API)
   * go to [Excahnge Rate API website](https://www.exchangerate-api.com) and create an account  
   * navigate and generate an API key.  
-  * copy the key (keep it secret 🤫) and replace "<YOUR_API_KEY_HERE>" in the code (row 32 and row 56).
+  * copy the key (keep it secret 🤫) and replace "<YOUR_API_KEY_HERE>" in the code (row 33 and row 60).
   * start application
 
 ---
 
-This application works with currency conversion rates for 161 currencies and gives users options to:
-* choose the currency they want to exchange
-* choose the currency they want to receive
-* enter the amount of currency for exchange
-* added dashboard with most common currencies rates
-* added pop-up window with detailed information about every currency
+This application works with currency conversion rates for over 150 currencies and gives users options to:
+* return information about conversation rate and received amount, based on user input
+* check the dashboard with the most common currency rates
+* click on the  pop-up window with detailed information about every currency
 ---
 
 ## Technology stack:
