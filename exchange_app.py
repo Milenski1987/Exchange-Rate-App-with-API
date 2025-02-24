@@ -29,13 +29,17 @@ def check_input_validity(func):
 @check_input_validity
 def exchange(current_currency_amount: float,current_currency:str, wanted_currency:str) -> str:
     # Making our request and get information
-    url = f'https://v6.exchangerate-api.com/v6/<YOUR_API_KEY_HERE>/latest/{current_currency.split()[1]}'
-    response = requests.get(url)
-    rate = response.json()["conversion_rates"][wanted_currency.split()[1]]
-    current_result = rate * current_currency_amount
-    return (f"Current exchange rate:\n1 {current_currency.split()[1]} = {rate:.3f}{wanted_currency.split()[1]}\n\n"
-            f"For {current_currency_amount} {current_currency.split()[1]}\n "
-            f"you will receive {current_result:.3f}{wanted_currency.split()[1]}\n\n")
+    try:
+        url = f'https://v6.exchangerate-api.com/v6/<YOUR_API_KEY_HERE>/latest/{current_currency.split()[1]}'
+        response = requests.get(url)
+        rate = response.json()["conversion_rates"][wanted_currency.split()[1]]
+        current_result = rate * current_currency_amount
+    except:
+        return "Server error! Please try again later!"
+    else:
+        return (f"Current exchange rate:\n1 {current_currency.split()[1]} = {rate:.3f}{wanted_currency.split()[1]}\n\n"
+                f"For {current_currency_amount} {current_currency.split()[1]}\n "
+                f"you will receive {current_result:.3f}{wanted_currency.split()[1]}\n\n")
 
 
 def get_exchange_information():
@@ -146,13 +150,16 @@ response_field.place(x = 290, y = 470)
 
 #create and arrange dashboard with most common currencies
 dashboard_text = tk.Text(my_canvas, bg="light yellow", fg="black", font="Arial",width= 28, height=8)
-rate_usd, rate_gbp, rate_chf, rate_bgn, rate_cny = dashboard_rates("EUR")
-dashboard_text.insert(tk.END, f"Common currencies rates for 🇪🇺Euro\n.                         We Buy | We Sell")
-dashboard_text.insert(tk.END, f"\n 🇺🇸US Dollar        {rate_usd:.3f} | {(rate_usd + 0.012):.3f}")
-dashboard_text.insert(tk.END, f"\n 🇬🇧British Pound  {rate_gbp:.3f} | {(rate_gbp + 0.011):.3f}")
-dashboard_text.insert(tk.END, f"\n 🇨🇭Swiss Franc    {rate_chf:.3f} | {(rate_chf + 0.012):.3f}")
-dashboard_text.insert(tk.END, f"\n 🇧🇬Bulgarian Lev  {rate_bgn:.3f} | {(rate_bgn + 0.010):.3f}")
-dashboard_text.insert(tk.END, f"\n 🇨🇳Chinese yuan  {rate_cny:.3f} | {(rate_cny + 0.015):.3f}")
+try:
+    rate_usd, rate_gbp, rate_chf, rate_bgn, rate_cny = dashboard_rates("EUR")
+    dashboard_text.insert(tk.END, f"Common currencies rates for 🇪🇺Euro\n.                         We Buy | We Sell")
+    dashboard_text.insert(tk.END, f"\n 🇺🇸US Dollar        {rate_usd:.3f} | {(rate_usd + 0.012):.3f}")
+    dashboard_text.insert(tk.END, f"\n 🇬🇧British Pound  {rate_gbp:.3f} | {(rate_gbp + 0.011):.3f}")
+    dashboard_text.insert(tk.END, f"\n 🇨🇭Swiss Franc    {rate_chf:.3f} | {(rate_chf + 0.012):.3f}")
+    dashboard_text.insert(tk.END, f"\n 🇧🇬Bulgarian Lev  {rate_bgn:.3f} | {(rate_bgn + 0.010):.3f}")
+    dashboard_text.insert(tk.END, f"\n 🇨🇳Chinese yuan  {rate_cny:.3f} | {(rate_cny + 0.015):.3f}")
+except:
+    dashboard_text.insert(tk.END, "Server error! Please try again later!")
 dashboard_text.place(x= 340, y = 20)
 
 #create button for pop-up informative window
