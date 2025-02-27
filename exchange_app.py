@@ -14,33 +14,28 @@ def resource_path(relative_path):
         base_path = os.path.abspath(".")
     return os.path.join(base_path, relative_path)
 
-
 def check_input_validity(func):
-    # Check validity of amount input
+    # Check for positive number
     def wrapper(current_currency_amount, *args, **kwargs):
-        if not isinstance(current_currency_amount, (int,float)):
-            raise ValueError("Amount must be valid number!")
         if current_currency_amount <= 0:
-            raise ValueError("Amount must be positive number!")
+            raise ValueError
         return func(current_currency_amount, *args, **kwargs)
     return wrapper
-
 
 @check_input_validity
 def exchange(current_currency_amount: float,current_currency:str, wanted_currency:str) -> str:
     # Making our request and get information
     try:
-        url = f'https://v6.exchangerate-api.com/v6/<YOUR_API_KEY_HERE>/latest/{current_currency.split()[1]}'
+        url = f'https://v6.exchangerate-api.com/v6/<YOUR_API_KEY>/latest/{current_currency.split()[1]}'
         response = requests.get(url)
         rate = response.json()["conversion_rates"][wanted_currency.split()[1]]
         current_result = rate * current_currency_amount
-    except:
+    except KeyError:
         return "Server error! Please try again later!"
     else:
         return (f"Current exchange rate:\n1 {current_currency.split()[1]} = {rate:.3f}{wanted_currency.split()[1]}\n\n"
                 f"For {current_currency_amount} {current_currency.split()[1]}\n "
                 f"you will receive {current_result:.3f}{wanted_currency.split()[1]}\n\n")
-
 
 def get_exchange_information():
     # main GUI function that gives user a choice for currencies and ammount
@@ -51,13 +46,12 @@ def get_exchange_information():
         user_current_currency_amount = float(input_field_entry_amount.get())
         response = exchange( user_current_currency_amount,user_current_currency, user_wanted_currency)
         response_field.insert(tk.END, response)
-    except ValueError as e:
-        response_field.insert(tk.END, e)
-
+    except ValueError:
+        response_field.insert(tk.END, "Amount must be valid positive number")
 
 def dashboard_rates(first_currency:str) -> float:
     # Get information for our dashboard with common currencies
-    url = f'https://v6.exchangerate-api.com/v6/<YOUR_API_KEY_HERE>/latest/{first_currency}'
+    url = f'https://v6.exchangerate-api.com/v6/<YOUR_API_KEY>/latest/{first_currency}'
     response = requests.get(url)
     rate_usd = response.json()["conversion_rates"]["USD"]
     rate_gbp = response.json()["conversion_rates"]["GBP"]
@@ -65,7 +59,6 @@ def dashboard_rates(first_currency:str) -> float:
     rate_bgn = response.json()["conversion_rates"]["BGN"]
     rate_cny = response.json()["conversion_rates"]["CNY"]
     return rate_usd, rate_gbp, rate_chf, rate_bgn, rate_cny
-
 
 def information_pop_up():
     #Create screen with detailed information about currencies
@@ -77,8 +70,6 @@ def information_pop_up():
     image = ImageTk.PhotoImage(file=resource_path("currency_codes.png"))
     imagebox.config(image=image)
     imagebox.image = image
-
-
 
 def main():
     print("Hello to Exchange Rate App")
@@ -93,7 +84,6 @@ def main():
     #User get information about exchange rate and amount of currency he will receive
     result = exchange(user_current_currency.upper(),user_current_currency_amount, user_wanted_currency.upper())
     print(result)
-
 
 # read file with currencies data
 with open(resource_path("currencies_data.txt"), "r") as data_currency:
@@ -158,7 +148,7 @@ try:
     dashboard_text.insert(tk.END, f"\n 🇨🇭Swiss Franc    {rate_chf:.3f} | {(rate_chf + 0.012):.3f}")
     dashboard_text.insert(tk.END, f"\n 🇧🇬Bulgarian Lev  {rate_bgn:.3f} | {(rate_bgn + 0.010):.3f}")
     dashboard_text.insert(tk.END, f"\n 🇨🇳Chinese yuan  {rate_cny:.3f} | {(rate_cny + 0.015):.3f}")
-except:
+except KeyError:
     dashboard_text.insert(tk.END, "Server error! Please try again later!")
 dashboard_text.place(x= 340, y = 20)
 
