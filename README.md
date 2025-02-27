@@ -12,6 +12,8 @@ The application is still in beta and works only in IDE. To run this app follow t
   * start application
 
 ### Currently, the application runs smoothly on macOS.
+![Screenshot 2025-02-27 at 21 42 03](https://github.com/user-attachments/assets/0798253f-bfec-4ad9-9aee-084c6afb5694)
+
 ---
 
 This application works with currency conversion rates for over 150 currencies and gives users options to:
