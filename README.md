@@ -24,8 +24,8 @@ This application works with currency conversion rates for over 150 currencies an
 ---
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/0798253f-bfec-4ad9-9aee-084c6afb5694" width="500" />
-  <img src="https://github.com/user-attachments/assets/d3ec7880-3976-43af-b217-e894a9ef3cec" width="500" /> 
+  <img src="https://github.com/user-attachments/assets/0798253f-bfec-4ad9-9aee-084c6afb5694" width="490" />
+  <img src="https://github.com/user-attachments/assets/d3ec7880-3976-43af-b217-e894a9ef3cec" width="490" /> 
 </p>
 
 
