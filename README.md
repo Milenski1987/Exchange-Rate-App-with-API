@@ -4,7 +4,7 @@
 Application works with Exchange Rate API - Get all conversion rates in real-time.
 
 
-To run this app follow the steps:
+✅ To run this app follow the steps:
   * open your IDE and copy files from [this repository](https://github.com/Milenski1987/Exchange-Rate-App-with-API)
   * go to [Excahnge Rate API website](https://www.exchangerate-api.com) and create an account  
   * navigate and generate an API key.  
@@ -15,7 +15,7 @@ Currently runs smoothly on macOS. Still in beta and works only in IDE
 
 ---
 
-This application works with currency conversion rates for over 150 currencies and gives users options to:
+### 🧑‍💻 This application works with currency conversion rates for over 150 currencies and gives users options to:
 * return information about conversation rate and received amount, based on user input
 * check the dashboard with the most common currency rates
 * click on the  pop-up window with detailed information about every currency
@@ -46,7 +46,7 @@ This application works with currency conversion rates for over 150 currencies an
 
 ---
 
-## Technology stack:
+## ⚙️ Technology stack:
 <p align="left">
   &emsp;
     <a href="#"><img alt="Python" src="https://github.com/tandpfun/skill-icons/blob/main/icons/Python-Dark.svg" width="40" height ="40"></a>
