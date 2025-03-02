@@ -34,7 +34,7 @@ def exchange(current_currency_amount: float,current_currency:str, wanted_currenc
         return "Server error! Please try again later!"
     else:
         return (f"Current exchange rate:\n1 {current_currency.split()[1]} = {rate:.3f}{wanted_currency.split()[1]}\n\n"
-                f"For {current_currency_amount} {current_currency.split()[1]}\n "
+                f"For {current_currency_amount:.3f} {current_currency.split()[1]}\n "
                 f"you will receive {current_result:.3f}{wanted_currency.split()[1]}\n\n")
 
 def get_exchange_information():
@@ -71,6 +71,44 @@ def information_pop_up():
     imagebox.config(image=image)
     imagebox.image = image
 
+def toggle():
+    #Creates toggle between light and dark modes
+    global switch_value
+    if switch_value == True:
+        my_canvas.create_image(0,0,image = dark, anchor="nw")
+        my_canvas.create_text(450, 260, text="Choose the currency you want to exchange here: ", font=("Arial", 15),
+                              fill="white")
+        my_canvas.create_text(450, 320, text="Choose the currency you want to receive here:", font=("Arial", 15),
+                              fill="white")
+        my_canvas.create_text(450, 385, text="Currency amount you want to exchange: ", font=("Arial", 15), fill="white")
+        my_canvas.create_text(800, 53, text="For more detailed currency information: ", font=("Arial", 15),
+                              fill="white")
+        input_menu.config(bg="black", fg="white", width=7)
+        receive_menu.config(bg="black", fg="white", width=7)
+        input_field_entry_amount.config(justify='center', bg="grey", fg="white")
+        dashboard_text.config(bg="black", fg="white", font="Arial")
+        response_field.config(bg="black", fg="white")
+        my_canvas.create_text(790, 140, text="Toggle 'dark mode' / 'light mode'", font=("Arial", 15), fill="white")
+        switch.config(text="Light mode")
+        switch_value = False
+    else:
+        my_canvas.create_image(0,0,image = light, anchor="nw")
+        my_canvas.create_text(450, 260, text="Choose the currency you want to exchange here: ", font=("Arial", 15),
+                              fill="black")
+        my_canvas.create_text(450, 320, text="Choose the currency you want to receive here:", font=("Arial", 15),
+                              fill="black")
+        my_canvas.create_text(450, 385, text="Currency amount you want to exchange: ", font=("Arial", 15), fill="black")
+        my_canvas.create_text(800, 53, text="For more detailed currency information: ", font=("Arial", 15),
+                              fill="black")
+        input_menu.config(bg="light blue", fg="black", width=7)
+        receive_menu.config(bg="light blue", fg="black", width=7)
+        input_field_entry_amount.config(justify='center', bg="light blue", fg="black")
+        dashboard_text.config(bg="light yellow", fg="black", font="Arial")
+        response_field.config(bg="light blue", fg="black")
+        my_canvas.create_text(790, 140, text="Toggle 'dark mode' / 'light mode'", font=("Arial", 15), fill="black")
+        switch.config(text="Dark mode")
+        switch_value = True
+
 def main():
     print("Hello to Exchange Rate App")
 
@@ -96,19 +134,27 @@ root.title("Exchange rate App")
 root.geometry("1020x690")
 
 #define image
-bg = PhotoImage(file=resource_path("official_background.png"))
+light = PhotoImage(file=resource_path("official_background.png"))
+dark = PhotoImage(file=resource_path("dark_background.png"))
+switch_value = True
 
 #create canvas
 my_canvas = tk.Canvas(root, width=1020, height=680)
 my_canvas.pack(fill="both", expand=True)
 
+#switch button to toggle light and dark mode
+switch = ttk.Button(root, command=toggle)
+switch.config(text="Dark mode")
+switch.place(x= 735, y = 150)
+
 #set image in canvas
-my_canvas.create_image(0,0,image = bg, anchor="nw")
+my_canvas.create_image(0,0,image = light, anchor="nw")
 
 #create labels for input fields
 my_canvas.create_text(450,260 , text="Choose the currency you want to exchange here: ",font=("Arial", 15), fill="black")
 my_canvas.create_text(450,320 , text="Choose the currency you want to receive here:",font=("Arial", 15), fill="black")
 my_canvas.create_text(450,385 , text="Currency amount you want to exchange: ",font=("Arial", 15), fill="black")
+my_canvas.create_text(790,140 , text="Toggle 'dark mode' / 'light mode'",font=("Arial", 15), fill="black")
 
 #create menus
 input_currency_menu = StringVar(my_canvas)
@@ -125,7 +171,8 @@ input_menu.place(x= 400, y= 275)
 receive_menu.place(x= 400, y = 335)
 
 #create amount entry field and arrange it
-input_field_entry_amount = tk.Entry(my_canvas,justify='center', bg="light blue", fg="black", width=10)
+input_field_entry_amount = tk.Entry(my_canvas, width=10)
+input_field_entry_amount.config(justify='center', bg="light blue", fg="black")
 input_field_entry_amount.place(x= 400, y= 400)
 
 #create exchange button and arrange it
@@ -135,14 +182,16 @@ exchange_button = ttk.Button(root,width= 15, text ="Exchange", command=lambda: g
 exchange_button.place(x = 360, y = 430)
 
 #create app response field and arrange it
-response_field = tk.Text(my_canvas, bg="light blue" , fg="black", width=44, height= 11)
+response_field = tk.Text(my_canvas, width=44, height= 11)
+response_field.config(bg="light blue" , fg="black")
 response_field.place(x = 290, y = 470)
 
 #create and arrange dashboard with most common currencies
-dashboard_text = tk.Text(my_canvas, bg="light yellow", fg="black", font="Arial",width= 28, height=8)
+dashboard_text = tk.Text(my_canvas ,width= 28, height=8)
+dashboard_text.config(bg="light yellow", fg="black", font="Arial")
 try:
     rate_usd, rate_gbp, rate_chf, rate_bgn, rate_cny = dashboard_rates("EUR")
-    dashboard_text.insert(tk.END, f"Common currencies rates for 🇪🇺Euro\n.                         We Buy | We Sell")
+    dashboard_text.insert(tk.END, f"Common currencies rates for 🇪🇺Euro\n                         We Buy | We Sell")
     dashboard_text.insert(tk.END, f"\n 🇺🇸US Dollar        {rate_usd:.3f} | {(rate_usd + 0.012):.3f}")
     dashboard_text.insert(tk.END, f"\n 🇬🇧British Pound  {rate_gbp:.3f} | {(rate_gbp + 0.011):.3f}")
     dashboard_text.insert(tk.END, f"\n 🇨🇭Swiss Franc    {rate_chf:.3f} | {(rate_chf + 0.012):.3f}")
