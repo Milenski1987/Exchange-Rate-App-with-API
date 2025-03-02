@@ -12,7 +12,12 @@ The application is still in beta and works only in IDE. To run this app follow t
   * start application
 
 ### Currently, the application runs smoothly on macOS.
-![Screenshot 2025-02-27 at 21 42 03](https://github.com/user-attachments/assets/0798253f-bfec-4ad9-9aee-084c6afb5694)
+
+
+![Light mode](https://github.com/user-attachments/assets/0798253f-bfec-4ad9-9aee-084c6afb5694)
+
+![Dark mode](https://github.com/user-attachments/assets/d3ec7880-3976-43af-b217-e894a9ef3cec)
+
 
 ---
 
@@ -20,6 +25,22 @@ This application works with currency conversion rates for over 150 currencies an
 * return information about conversation rate and received amount, based on user input
 * check the dashboard with the most common currency rates
 * click on the  pop-up window with detailed information about every currency
+* choose light or dark mode interface
+
+---
+### 📁 Project structure
+
+```
+.
+├── LICENSE
+├── README.md                  # Project documentation
+├── currencies_data.txt        # Data for all currencies used in the program
+├── currency_codes.png         # Page with currency information used in the pop-up window
+├── dark_background.png        # Dark mode background image
+├── exchange_app.py            # Main program file
+└── official_background.png    # Light mode background image
+```
+
 ---
 
 ## Technology stack:
