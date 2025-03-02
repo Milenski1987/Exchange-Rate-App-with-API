@@ -13,12 +13,6 @@ The application is still in beta and works only in IDE. To run this app follow t
 
 ### Currently, the application runs smoothly on macOS.
 
-
-![Light mode](https://github.com/user-attachments/assets/0798253f-bfec-4ad9-9aee-084c6afb5694)
-
-![Dark mode](https://github.com/user-attachments/assets/d3ec7880-3976-43af-b217-e894a9ef3cec)
-
-
 ---
 
 This application works with currency conversion rates for over 150 currencies and gives users options to:
@@ -26,6 +20,15 @@ This application works with currency conversion rates for over 150 currencies an
 * check the dashboard with the most common currency rates
 * click on the  pop-up window with detailed information about every currency
 * choose light or dark mode interface
+
+---
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/0798253f-bfec-4ad9-9aee-084c6afb5694" width="500" />
+  <img src="https://github.com/user-attachments/assets/d3ec7880-3976-43af-b217-e894a9ef3cec" width="500" /> 
+</p>
+
+
 
 ---
 ### 📁 Project structure
