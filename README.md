@@ -25,10 +25,9 @@ Currently runs smoothly on macOS. Still in beta and works only in IDE
 ### 🙍‍♂️ Current user interface
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/0798253f-bfec-4ad9-9aee-084c6afb5694" width="400" />
+  <img src="https://github.com/user-attachments/assets/3fc0fd17-4627-4cf5-9352-f314934eed76" width="400" />
   <img src="https://github.com/user-attachments/assets/d3ec7880-3976-43af-b217-e894a9ef3cec" width="400" /> 
 </p>
-
 
 
 ---
