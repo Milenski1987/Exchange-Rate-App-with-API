@@ -24,8 +24,8 @@ Currently runs smoothly on macOS. Still in beta and works only in IDE
 ---
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/0798253f-bfec-4ad9-9aee-084c6afb5694" width="490" />
-  <img src="https://github.com/user-attachments/assets/d3ec7880-3976-43af-b217-e894a9ef3cec" width="490" /> 
+  <img src="https://github.com/user-attachments/assets/0798253f-bfec-4ad9-9aee-084c6afb5694" width="400" />
+  <img src="https://github.com/user-attachments/assets/d3ec7880-3976-43af-b217-e894a9ef3cec" width="400" /> 
 </p>
 
 
@@ -53,9 +53,9 @@ Currently runs smoothly on macOS. Still in beta and works only in IDE
   &emsp;
     <a href="#"><img src="https://github.com/tandpfun/skill-icons/blob/main/icons/PyCharm-Dark.svg" width="40" height="40" /></a>
   &emsp;
-    <a href="#"><img alt="GitHub" src="https://github.com/tandpfun/skill-icons/blob/main/icons/Github-Light.svg" title="GitHub" **alt="GitHub" width="40" height="40" ></a>
+    <a href="https://github.com/Milenski1987"><img alt="GitHub" src="https://github.com/tandpfun/skill-icons/blob/main/icons/Github-Dark.svg" title="GitHub" **alt="GitHub" width="40" height="40" ></a>
   &emsp;
-    <a href="#"><img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Apple-Light.svg" title="Apple" **alt="Apple" width="40" height="40" /></a>
+    <a href="#"><img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Apple-Dark.svg" title="Apple" **alt="Apple" width="40" height="40" /></a>
 </p>
 
 
