@@ -22,6 +22,7 @@ Currently runs smoothly on macOS. Still in beta and works only in IDE
 * choose light or dark mode interface
 
 ---
+### 🙍‍♂️ Current user interface
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/0798253f-bfec-4ad9-9aee-084c6afb5694" width="400" />
