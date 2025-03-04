@@ -88,7 +88,7 @@ def toggle():
         input_field_entry_amount.config(justify='center', bg="grey", fg="white")
         dashboard_text.config(bg="black", fg="white", font="Arial")
         response_field.config(bg="black", fg="white")
-        my_canvas.create_text(790, 140, text="Toggle 'dark mode' / 'light mode'", font=("Arial", 15), fill="white")
+        my_canvas.create_text(790, 140, text="For 'light mode' click here:", font=("Arial", 15), fill="white")
         switch.config(text="Light mode")
         switch_value = False
     else:
@@ -105,7 +105,7 @@ def toggle():
         input_field_entry_amount.config(justify='center', bg="light blue", fg="black")
         dashboard_text.config(bg="light yellow", fg="black", font="Arial")
         response_field.config(bg="light blue", fg="black")
-        my_canvas.create_text(790, 140, text="Toggle 'dark mode' / 'light mode'", font=("Arial", 15), fill="black")
+        my_canvas.create_text(790, 140, text="For 'dark mode' click here:", font=("Arial", 15), fill="black")
         switch.config(text="Dark mode")
         switch_value = True
 
