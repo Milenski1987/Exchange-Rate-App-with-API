@@ -154,7 +154,7 @@ my_canvas.create_image(0,0,image = light, anchor="nw")
 my_canvas.create_text(450,260 , text="Choose the currency you want to exchange here: ",font=("Arial", 15), fill="black")
 my_canvas.create_text(450,320 , text="Choose the currency you want to receive here:",font=("Arial", 15), fill="black")
 my_canvas.create_text(450,385 , text="Currency amount you want to exchange: ",font=("Arial", 15), fill="black")
-my_canvas.create_text(790,140 , text="Toggle 'dark mode' / 'light mode'",font=("Arial", 15), fill="black")
+my_canvas.create_text(790,140 , text="For 'dark mode' click here:",font=("Arial", 15), fill="black")
 
 #create menus
 input_currency_menu = StringVar(my_canvas)
