@@ -24,7 +24,7 @@ def check_input_validity(func):
 
 @check_input_validity
 def exchange(current_currency_amount: float,current_currency:str, wanted_currency:str) -> str:
-    # Making our request and get information
+    # Making our request and getting information
     try:
         url = f'https://v6.exchangerate-api.com/v6/<YOUR_API_KEY>/latest/{current_currency.split()[1]}'
         response = requests.get(url)
@@ -35,10 +35,10 @@ def exchange(current_currency_amount: float,current_currency:str, wanted_currenc
     else:
         return (f"Current exchange rate:\n1 {current_currency.split()[1]} = {rate:.3f}{wanted_currency.split()[1]}\n\n"
                 f"For {current_currency_amount:.3f} {current_currency.split()[1]}\n "
-                f"you will receive {current_result:.3f}{wanted_currency.split()[1]}\n\n")
+                f"you will receive {current_result:.3f} {wanted_currency.split()[1]}\n\n")
 
 def get_exchange_information():
-    # main GUI function that gives user a choice for currencies and ammount
+    # main GUI function that gives user a choice for currencies and amount
     try:
         response_field.delete("1.0", "end")
         user_current_currency = input_currency_menu.get()
