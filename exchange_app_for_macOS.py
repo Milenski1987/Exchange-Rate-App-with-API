@@ -26,7 +26,7 @@ def check_input_validity(func):
 def exchange(current_currency_amount: float,current_currency:str, wanted_currency:str) -> str:
     # Making our request and getting information
     try:
-        url = f'https://v6.exchangerate-api.com/v6/<YOUR_API_KEY>/latest/{current_currency.split()[1]}'
+        url = f'https://v6.exchangerate-api.com/v6/66c0148aeceee70c30376892/latest/{current_currency.split()[1]}'
         response = requests.get(url)
         rate = response.json()["conversion_rates"][wanted_currency.split()[1]]
         current_result = rate * current_currency_amount
@@ -51,7 +51,7 @@ def get_exchange_information():
 
 def dashboard_rates(first_currency:str) -> float:
     # Get information for our dashboard with common currencies
-    url = f'https://v6.exchangerate-api.com/v6/<YOUR_API_KEY>/latest/{first_currency}'
+    url = f'https://v6.exchangerate-api.com/v6/66c0148aeceee70c30376892/latest/{first_currency}'
     response = requests.get(url)
     rate_usd = response.json()["conversion_rates"]["USD"]
     rate_gbp = response.json()["conversion_rates"]["GBP"]
@@ -67,7 +67,7 @@ def information_pop_up():
     informative_screen.title("Detailed information")
     imagebox = tk.Label(informative_screen)
     imagebox.pack()
-    image = ImageTk.PhotoImage(file=resource_path("currency_codes.png"))
+    image = ImageTk.PhotoImage(file=resource_path("images/currency_codes.png"))
     imagebox.config(image=image)
     imagebox.image = image
 
@@ -124,7 +124,7 @@ def main():
     print(result)
 
 # read file with currencies data
-with open(resource_path("currencies_data.txt"), "r") as data_currency:
+with open(resource_path("resources/currencies_data.txt"), "r") as data_currency:
     supported_currency = data_currency.readlines()
     available_currencies = [currency.strip("\n") for currency in supported_currency]
 
@@ -134,8 +134,8 @@ root.title("Exchange rate App")
 root.geometry("1020x690")
 
 #define image
-light = PhotoImage(file=resource_path("official_background.png"))
-dark = PhotoImage(file=resource_path("dark_background.png"))
+light = PhotoImage(file=resource_path("images/official_background.png"))
+dark = PhotoImage(file=resource_path("images/dark_background.png"))
 switch_value = True
 
 #create canvas
