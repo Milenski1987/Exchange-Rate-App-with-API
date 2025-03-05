@@ -6,12 +6,13 @@ Application works with Exchange Rate API - Get all conversion rates in real-time
 
 ✅ To run this app follow the steps:
   * open your IDE and copy files from [this repository](https://github.com/Milenski1987/Exchange-Rate-App-with-API)
+  * files includes macOS version and Windows version
   * go to [Excahnge Rate API website](https://www.exchangerate-api.com) and create an account  
   * navigate and generate an API key.  
-  * copy the key (keep it secret 🤫) and replace "<YOUR_API_KEY>" in the code (row 33 and row 60).
+  * copy the key (keep it secret 🤫) and replace "<YOUR_API_KEY>" in the code (row 29 and row 54).
   * start application
 
-Currently runs smoothly on macOS. Still in beta and works only in IDE
+Currently runs smoothly on macOS. The Windows version works, but it is still in development. Still in beta and works only in IDE
 
 ---
 
@@ -34,14 +35,19 @@ Currently runs smoothly on macOS. Still in beta and works only in IDE
 ### 📁 Project structure
 
 ```
-.
+Exchange-Rate-app-with-API
 ├── LICENSE
-├── README.md                  # Project documentation
-├── currencies_data.txt        # Data for all currencies used in the program
-├── currency_codes.png         # Page with currency information used in the pop-up window
-├── dark_background.png        # Dark mode background image
-├── exchange_app.py            # Main program file
-└── official_background.png    # Light mode background image
+├── README.md                             # Project documentation
+├── images/                               # Folder for images used in GUI
+|   ├── currency_codes.png                # Page with currency information used in the pop-up window
+|   ├── dark_background.png               # Dark mode background image
+|   ├── official_background.png           # Light mode background image
+├── resources/                            # Folder for currencies data files
+|   ├── currencies_data_for_mac.txt       # Currencies data used in macOS version of app
+|   ├── currencies_data_for_windows.txt   # Currencies data used in windows version of app
+├── exchange_app_for_mac.py               # Main program file for macOS version
+├── exchange_app_for_windows.py           # Main program file for Windows version
+└── .gitignore                            # File to exclude unnecessary files from Git tracking
 ```
 
 ---
