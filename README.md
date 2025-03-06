@@ -38,7 +38,7 @@ Exchange-Rate-app-with-API
 ├── LICENSE
 ├── README.md                             # Project documentation
 ├── images/                               # Folder for images used in GUI
-|   ├── currency_codes.png                # Currency information used in the pop-up window
+|   ├── currency_codes.png                # Currency information for pop-up window
 |   ├── dark_background.png               # Dark mode background image
 |   ├── official_background.png           # Light mode background image
 ├── resources/                            # Folder for currencies data files
