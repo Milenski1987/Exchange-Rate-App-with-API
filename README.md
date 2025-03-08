@@ -33,23 +33,21 @@ Currently runs smoothly on macOS. The Windows version works, but it is still in 
 
 ---
 ### 📁 Project structure
-
 ```
 Exchange-Rate-app-with-API
 ├── LICENSE
 ├── README.md                             # Project documentation
 ├── images/                               # Folder for images used in GUI
-|   ├── currency_codes.png                # Page with currency information used in the pop-up window
+|   ├── currency_codes.png                # Currency information for pop-up window
 |   ├── dark_background.png               # Dark mode background image
 |   ├── official_background.png           # Light mode background image
 ├── resources/                            # Folder for currencies data files
-|   ├── currencies_data_for_mac.txt       # Currencies data used in macOS version of app
-|   ├── currencies_data_for_windows.txt   # Currencies data used in windows version of app
+|   ├── currencies_data_for_mac.txt       # Currency data used in macOS version of app
+|   ├── currencies_data_for_windows.txt   # Currency data used in windows version of app
 ├── exchange_app_for_mac.py               # Main program file for macOS version
 ├── exchange_app_for_windows.py           # Main program file for Windows version
-└── .gitignore                            # File to exclude unnecessary files from Git tracking
+└── .gitignore                            # Exclude unnecessary files from Git tracking
 ```
-
 ---
 
 ## ⚙️ Technology stack:
