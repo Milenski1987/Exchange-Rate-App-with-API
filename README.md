@@ -26,8 +26,8 @@ Currently runs smoothly on macOS. The Windows version works, but it is still in 
 ### 🙍‍♂️ Current user interface
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/3fc0fd17-4627-4cf5-9352-f314934eed76" width="400" />
-  <img src="https://github.com/user-attachments/assets/d3ec7880-3976-43af-b217-e894a9ef3cec" width="400" /> 
+  <img src="https://github.com/user-attachments/assets/ea6e332e-3c68-49a6-b574-fdf4e4a8c7dd" width="400" />
+  <img src="https://github.com/user-attachments/assets/ec636428-8422-42fe-979b-fd16d274b371" width="400" /> 
 </p>
 
 
