@@ -60,6 +60,8 @@ Exchange-Rate-app-with-API
     <a href="https://github.com/Milenski1987"><img alt="GitHub" src="https://github.com/tandpfun/skill-icons/blob/main/icons/Github-Dark.svg" title="GitHub" **alt="GitHub" width="40" height="40" ></a>
   &emsp;
     <a href="#"><img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Apple-Dark.svg" title="Apple" **alt="Apple" width="40" height="40" /></a>
+  &emsp;
+    <a href="#"><img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Windows-Dark.svg" title="Windows" **alt="Windows" width="40" height="40" /></a>
 </p>
 
 
