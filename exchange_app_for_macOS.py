@@ -83,8 +83,8 @@ def toggle():
         my_canvas.create_text(450, 385, text="Currency amount you want to exchange: ", font=("Arial", 15), fill="white")
         my_canvas.create_text(800, 53, text="For more detailed currency information: ", font=("Arial", 15),
                               fill="white")
-        input_menu.config(bg="black", fg="white", width=7)
-        receive_menu.config(bg="black", fg="white", width=7)
+        input_menu.config(bg="black", fg="white", width=25)
+        receive_menu.config(bg="black", fg="white", width=25)
         input_field_entry_amount.config(justify='center', bg="grey", fg="white")
         dashboard_text.config(bg="black", fg="white", font="Arial")
         response_field.config(bg="black", fg="white")
@@ -100,8 +100,8 @@ def toggle():
         my_canvas.create_text(450, 385, text="Currency amount you want to exchange: ", font=("Arial", 15), fill="black")
         my_canvas.create_text(800, 53, text="For more detailed currency information: ", font=("Arial", 15),
                               fill="black")
-        input_menu.config(bg="light blue", fg="black", width=7)
-        receive_menu.config(bg="light blue", fg="black", width=7)
+        input_menu.config(bg="light blue", fg="black", width=25)
+        receive_menu.config(bg="light blue", fg="black", width=25)
         input_field_entry_amount.config(justify='center', bg="light blue", fg="black")
         dashboard_text.config(bg="light yellow", fg="black", font="Arial")
         response_field.config(bg="light blue", fg="black")
@@ -124,7 +124,7 @@ def main():
     print(result)
 
 # read file with currencies data
-with open(resource_path("resources/currencies_data.txt"), "r") as data_currency:
+with open(resource_path("resources/currencies_data_for_mac.txt"), "r") as data_currency:
     supported_currency = data_currency.readlines()
     available_currencies = [currency.strip("\n") for currency in supported_currency]
 
@@ -160,15 +160,15 @@ my_canvas.create_text(790,140 , text="For 'dark mode' click here:",font=("Arial"
 input_currency_menu = StringVar(my_canvas)
 input_currency_menu.set(" ")
 input_menu = OptionMenu(my_canvas, input_currency_menu, *available_currencies)
-input_menu.config(bg="light blue",fg="black",width=7)
+input_menu.config(bg="light blue",fg="black",width=25)
 input_receive_menu = StringVar(my_canvas)
 input_receive_menu.set(" ")
 receive_menu = OptionMenu(my_canvas, input_receive_menu, *available_currencies)
-receive_menu.config(bg="light blue",fg="black",width=7)
+receive_menu.config(bg="light blue",fg="black",width=25)
 
 #arrange menus
-input_menu.place(x= 400, y= 275)
-receive_menu.place(x= 400, y = 335)
+input_menu.place(x= 320, y= 275)
+receive_menu.place(x= 320, y = 335)
 
 #create amount entry field and arrange it
 input_field_entry_amount = tk.Entry(my_canvas, width=10)
