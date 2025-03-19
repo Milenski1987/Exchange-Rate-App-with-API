@@ -67,7 +67,8 @@ def information_pop_up():
     informative_screen.title("Detailed information")
     imagebox = tk.Label(informative_screen)
     imagebox.pack()
-    image = ImageTk.PhotoImage(file=resource_path("images/currency_codes.png"))
+    codes_file = os.path.join("images", "currency_codes.png")
+    image = ImageTk.PhotoImage(file=resource_path(codes_file))
     imagebox.config(image=image)
     imagebox.image = image
 
@@ -124,7 +125,8 @@ def main():
     print(result)
 
 # read file with currencies data
-with open(resource_path("resources/currencies_data_for_mac.txt"), "r") as data_currency:
+currencies_data_file = os.path.join("resources", "currencies_data_for_mac.txt")
+with open(resource_path(currencies_data_file), "r") as data_currency:
     supported_currency = data_currency.readlines()
     available_currencies = [currency.strip("\n") for currency in supported_currency]
 
@@ -134,8 +136,10 @@ root.title("Exchange rate App")
 root.geometry("1020x690")
 
 #define image
-light = PhotoImage(file=resource_path("images/official_background.png"))
-dark = PhotoImage(file=resource_path("images/dark_background.png"))
+light_file = os.path.join("images", "official_background.png")
+dark_file = os.path.join("images", "dark_background.png")
+light = PhotoImage(file=resource_path(light_file))
+dark = PhotoImage(file=resource_path(dark_file))
 switch_value = True
 
 #create canvas
