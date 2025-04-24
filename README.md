@@ -4,9 +4,9 @@
 Application works with Exchange Rate API - Get all conversion rates in real-time.
 
 
-✅ To run this app follow the steps:
+✅ To run this app, follow the steps:
   * open your IDE and copy files from [this repository](https://github.com/Milenski1987/Exchange-Rate-App-with-API)
-  * files includes macOS version and Windows version
+  * files include macOS version and Windows version
   * go to [Excahnge Rate API website](https://www.exchangerate-api.com) and create an account  
   * navigate and generate an API key.  
   * copy the key (keep it secret 🤫) and replace "<YOUR_API_KEY>" in the code (row 29 and row 54).
