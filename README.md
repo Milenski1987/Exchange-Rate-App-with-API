@@ -17,7 +17,7 @@ Currently runs smoothly on macOS. The Windows version works, but it is still in 
 ---
 
 ### 🧑‍💻 This application works with currency conversion rates for over 150 currencies and gives users options to:
-* return information about conversation rate and received amount, based on user input
+* return information about the conversation rate and the received amount, based on user input
 * check the dashboard with the most common currency rates
 * click on the  pop-up window with detailed information about every currency
 * choose light or dark mode interface
