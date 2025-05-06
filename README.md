@@ -21,7 +21,7 @@ Currently runs smoothly on macOS. The Windows version works, but it is still in 
 * check the dashboard with the most common currency rates
 * click on the  pop-up window with detailed information about every currency
 * choose light or dark mode interface
-545
+
 ---
 ### 🙍‍♂️ Current user interface
 
